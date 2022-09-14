@@ -1,0 +1,114 @@
+{
+    "key": "my-app",
+    "name": "My app",
+    "description": "My very first app",
+    "baseUrl": "{{localBaseUrl}}",
+    "authentication": {
+        "type": "jwt"
+    },
+    "lifecycle": {
+        "installed": "/installed"
+    },
+    "scopes": [
+        "READ"
+    ],
+    "apiMigrations":{
+        "signed-install": true
+    },
+    "modules": {
+        "webItems": [
+            {
+                "key": "example-section-link",
+                "location": "system.user.options/personal",
+                "name": {
+                    "value": "Example app link"
+                },
+                "url": "/example-section-link"
+            }
+        ],
+        "jiraProjectPages": [
+            {
+                "url": "/iframe-content-url?projectId=${project.id}",
+                "iconUrl": "/logo-url-or-inline-svg",
+                "weight": 100,
+                "name": {
+                    "value": "My Project Page"
+                },
+                "key": "my-project-page"
+            }
+        ],
+        "webSections": [
+            {
+                "key": "board-links",
+                "location": "jira.agile.board.tools",
+                "weight": 10,
+                "name": {
+                    "value": "My Addon Dropdown"
+                }
+            }
+        ],
+        "webPanels": [
+            {
+                "key": "my-web-panel",
+                "url": "web-panel?id={board.id}&mode={board.screen}",
+                "name": {
+                    "value": "My Web Panel"
+                },
+                "location": "board-links",
+                "layout": {
+                    "width": "100px",
+                    "height": "100px"
+                }
+            },
+            {
+                "key": "my-configuration-page",
+                "url": "configuration?id={board.id}&type={board.type}",
+                "name": {
+                    "value": "My Configuration Page"
+                },
+                "location": "jira.agile.board.configuration",
+                "weight": 1
+            },
+            {
+                "key": "example-issue-left-panel",
+                "location": "atl.jira.view.issue.left.context",
+                "name": {
+                    "value": "App panel location left side title"
+                },
+                "url": "/example-issue-left-panel"
+            },
+            {
+                "key": "example-issue-right-panel",
+                "location": "atl.jira.view.issue.right.context",
+                "name": {
+                    "value": "App panel location right side title"
+                },
+                "url": "/example-issue-right-panel"
+            }
+        ],
+        "generalPages": [
+            {
+                "key": "hello-world-page-jira",
+                "location": "system.top.navigation.bar",
+                "name": {
+                    "value": "Hello World"
+                },
+                "url": "/hello-world",
+                "conditions": [{
+                    "condition": "user_is_logged_in"
+                }]
+            },
+            {
+                "key": "hello-world-page-confluence",
+                "location": "system.header/left",
+                "name": {
+                    "value": "Hello World"
+                },
+                "url": "/hello-world",
+                "conditions": [{
+                    "condition": "user_is_logged_in"
+                }]
+            }
+        ]
+    }
+}
